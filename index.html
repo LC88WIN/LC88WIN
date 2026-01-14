@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>LC88WIN Login</title>
+
+<style>
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ===== BODY ===== */
+body { 
+    background:
+        radial-gradient(circle at top, rgba(255,215,0,0.5)
+, transparent 60%), 
+        linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.9) 85%),
+        url('backgroun.PNG') no-repeat center center / cover;
+    background-blend-mode: screen, multiply, normal;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+    position:absolute;
+    top: clamp(10px, 2vh, 20px);
+    left: clamp(10px, 4vw, 30px);
+    right: clamp(10px, 4vw, 30px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* Logo */
+.logo-top-left img {
+    height: clamp(36px, 6vw, 55px);
+    max-width:100%;
+}
+
+/* Language */
+.language-select select {
+    padding:6px 12px;
+    border-radius:8px;
+    border:none;
+    background: rgba(255,255,255,0.85);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* ===== LOGIN BOX ===== */
+.login-container {
+    width: min(92%, 420px);
+    background: rgba(0,0,0,0.65);
+    padding: clamp(20px, 5vw, 35px);
+    border-radius:20px;
+    box-shadow: 0 0 25px rgba(255,215,0,0.8);
+    text-align:center;
+}
+
+.login-container h2 {
+    margin-bottom:20px;
+    font-size: clamp(20px, 4.5vw, 28px);
+    color:#FFD700;
+    text-shadow:0 0 10px #FFD700;
+}
+
+.login-container input {
+    width:100%;
+    padding: clamp(12px, 3vw, 14px);
+    margin-bottom:14px;
+    border-radius:8px;
+    border:none;
+    background: rgba(255,255,255,0.12);
+    color:#fff;
+    font-size: clamp(14px, 3.5vw, 16px);
+}
+
+.login-container input:focus {
+    outline:none;
+    box-shadow:0 0 10px #FFD700;
+}
+
+.login-container button {
+    width:100%;
+    padding: clamp(12px, 3vw, 14px);
+    border:none;
+    border-radius:8px;
+    background:#f39c12;
+    color:#000;
+    font-weight:bold;
+    font-size: clamp(14px, 3.5vw, 16px);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-container button:hover {
+    background:#e67e22;
+    box-shadow:0 0 15px #FFD700;
+}
+
+.links {
+    margin-top:14px;
+    font-size: clamp(12px, 3vw, 14px);
+}
+
+.links a {
+    color:#f39c12;
+    text-decoration:none;
+}
+
+.links a:hover {
+    color:#FFD700;
+}
+
+@media (max-width:480px){
+    body {
+        align-items:flex-start;
+        padding-top:80px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <div class="logo-top-left">
+        <img src="logo.png" alt="LC88WIN Logo">
+    </div>
+    <div class="language-select">
+        <select>
+            <option>ID</option>
+            <option>EN</option>
+            <option>中文</option>
+            <option>日本語</option>
+        </select>
+    </div>
+</div>
+
+<div class="login-container">
+    <h2>LC88WIN Login</h2>
+    <form onsubmit="return goHome()">
+        <input type="text" placeholder="Username / Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <div class="links">
+        <a href="register.html">Register</a> | 
+        <a href="#">Forgot Password?</a>
+    </div>
+</div>
+
+<script>
+function goHome(){
+    window.location.href = "home.html";
+    return false;
+}
+</script>
+
+</body>
+</html>
