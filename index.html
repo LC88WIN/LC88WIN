@@ -13,14 +13,13 @@
     font-family: Arial, sans-serif;
 }
 
-/* ===== BODY ===== */
-body { 
+/* Body hitam dengan aksen emas menyala */
+body {
     background:
-        radial-gradient(circle at top, rgba(255,215,0,0.5)
-, transparent 60%), 
-        linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.9) 85%),
-        url('backgroun.PNG') no-repeat center center / cover;
-    background-blend-mode: screen, multiply, normal;
+        radial-gradient(circle at top, rgba(121, 13, 0, 1), transparent 100%),
+        radial-gradient(circle at bottom, rgba(121, 13, 0, 1), transparent 100%),
+        linear-gradient(180deg, #000000 100%, #111111 100%);
+    background-blend-mode: Difference;
     color:#fff;
     min-height:100vh;
     display:flex;
