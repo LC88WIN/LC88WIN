@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LC88WIN Register</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+
+body { 
+    background:
+        radial-gradient(circle at top, rgba(255,215,0,0.5)
+, transparent 60%), 
+        linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.9) 85%),
+        url('backgroun.PNG') no-repeat center center / cover;
+    background-blend-mode: screen, multiply, normal;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+}
+
+.top-bar {
+    position: absolute;
+    top:20px;
+    left:20px;
+    right:20px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-top-left img { height:50px; }
+
+.language-select select {
+    padding:6px 12px;
+    border-radius:8px;
+    border:none;
+    background: rgba(255,255,255,0.85);
+    font-weight:bold;
+    cursor:pointer;
+}
+.language-select select:hover, .language-select select:focus {
+    background: rgba(255,215,0,0.3);
+    box-shadow: 0 0 10px #FFD700;
+    outline:none;
+}
+
+.register-container {
+    background: rgba(0,0,0,0.6);
+    padding:30px 40px;
+    border-radius:15px;
+    box-shadow: 0 0 20px rgba(255,215,0,0.7);
+    width:90%;
+    max-width:450px;
+    text-align:center;
+}
+
+.register-container h2 {
+    margin-bottom:20px;
+    color:#FFD700;
+    text-shadow: 0 0 10px #FFD700;
+}
+
+.register-container input {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:5px;
+    border:none;
+    background: rgba(255,255,255,0.1);
+    color:#fff;
+    font-size:16px;
+    transition: all 0.3s ease;
+}
+.register-container input:focus {
+    background: rgba(255,215,0,0.1);
+    box-shadow: 0 0 10px #FFD700;
+    outline:none;
+}
+
+.register-container button {
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:5px;
+    background:#f39c12;
+    color:#000;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.register-container button:hover {
+    background:#e67e22;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255,215,0,0.7);
+}
+
+.register-container .links {
+    margin-top:15px;
+    font-size:14px;
+}
+.register-container .links a {
+    color:#f39c12;
+    text-decoration:none;
+    margin:0 5px;
+    transition: all 0.3s ease;
+}
+.register-container .links a:hover {
+    text-decoration:underline;
+    color:#FFD700;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="logo-top-left">
+        <img src="logo.png" alt="LC88WIN Logo">
+    </div>
+    <div class="language-select">
+        <select>
+            <option>ID</option>
+            <option>EN</option>
+            <option>中文</option>
+            <option>日本語</option>
+        </select>
+    </div>
+</div>
+
+<div class="register-container">
+    <h2>LC88WIN Register</h2>
+    <form onsubmit="return goIndex()">
+        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit">Register</button>
+    </form>
+    <div class="links">
+        <a href="index.html">Back to Home</a>
+    </div>
+</div>
+
+<script>
+function goIndex(){
+    // Setelah register, arahkan ke index.html
+    window.location.href = "index.html";
+    return false; // mencegah reload form
+}
+</script>
+
+</body>
+</html>
