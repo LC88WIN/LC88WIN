@@ -273,6 +273,20 @@ function previewPhoto(input){
         r.readAsDataURL(input.files[0]);
     }
 }
+
+/* ================= NAVIGASI BOTTOM ================= */
+document.querySelectorAll('.bottom-nav a').forEach((btn,i)=>{
+    btn.addEventListener('click',e=>{
+        e.preventDefault();
+        switch(i){
+            case 0: location.href='home.html'; break;
+            case 1: location.href='promo.html'; break;
+            case 2: location.href='depo.html'; break;
+            case 3: location.href='riwayat.html'; break;
+            case 4: location.href='akun.html'; break;
+        }
+    });
+});
 </script>
 
 </body>
