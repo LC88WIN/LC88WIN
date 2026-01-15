@@ -246,11 +246,11 @@ header img{
 
 <!-- ================= BOTTOM NAV ================= -->
 <nav class="bottom-nav">
-    <a href="#" class="active">
+    <a href="#">
         <span>🏠</span>
         BERANDA
     </a>
-    <a href="#">
+    <a href="#" class="active">
         <span>🎁</span>
         PROMO
     </a>
@@ -283,11 +283,23 @@ document.querySelectorAll('.promo-detail-btn').forEach(btn=>{
     });
 });
 
-/* ===== ACTIVE NAV ===== */
-document.querySelectorAll('.bottom-nav a').forEach(item=>{
-    item.addEventListener('click',()=>{
+/* ===== ACTIVE NAV & NAVIGASI HALAMAN ===== */
+document.querySelectorAll('.bottom-nav a').forEach((item,index)=>{
+    item.addEventListener('click',e=>{
+        e.preventDefault();
+
+        // Hapus aktif
         document.querySelectorAll('.bottom-nav a').forEach(i=>i.classList.remove('active'));
         item.classList.add('active');
+
+        // Pindah halaman sesuai index
+        switch(index){
+            case 0: location.href='home.html'; break;
+            case 1: location.href='promo.html'; break;
+            case 2: location.href='depo.html'; break;
+            case 3: location.href='riwayat.html'; break;
+            case 4: location.href='akun.html'; break;
+        }
     });
 });
 </script>
