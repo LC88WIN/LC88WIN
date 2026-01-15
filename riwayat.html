@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>LC88WIN - Riwayat Transaksi</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{
+    padding-bottom:80px;
+    background:
+        radial-gradient(circle at top,#7a0000,transparent),
+        radial-gradient(circle at bottom,#7a0000,transparent),
+        linear-gradient(180deg,#000,#111);
+    color:#fff;
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    background:rgba(0,0,0,.6);
+    margin:10px;
+    border-radius:12px;
+}
+header img{height:45px}
+
+/* TITLE */
+.page-title{
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    margin:20px 0;
+    color:#f39c12;
+}
+
+/* FILTER */
+.filter-bar{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:10px;
+}
+.filter-bar button{
+    padding:8px 16px;
+    border:none;
+    border-radius:20px;
+    background:#000;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+.filter-bar button.active{
+    background:#f39c12;
+    color:#000;
+}
+
+/* LIST TRANSAKSI */
+.transaction-list{
+    margin:10px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-height:calc(100vh - 230px);
+    overflow-y:auto;
+}
+
+.transaction-item{
+    background:linear-gradient(180deg,#7a0000,#2b0000);
+    padding:14px;
+    border-radius:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    transition:0.3s;
+}
+.transaction-item:hover{
+    transform:scale(1.02);
+}
+
+.transaction-left{
+    display:flex;
+    flex-direction:column;
+}
+
+.transaction-date{
+    font-size:14px;
+    color:#ccc;
+}
+.transaction-type{
+    font-size:20px;
+    font-weight:bold;
+}
+.transaction-right{
+    text-align:right;
+}
+
+.transaction-amount{
+    font-size:20px;
+    font-weight:bold;
+    color:#ffcc66;
+}
+.transaction-status{
+    font-size:14px;
+    margin-top:4px;
+    transition: all 0.3s ease;
+}
+
+/* STATUS COLORS */
+.status-sukses{color:#2ecc71}
+.status-pending{color:#f39c12}
+.status-gagal{color:#e74c3c}
+.status-bonus{color:#3498db}
+
+/* BOTTOM NAV */
+.bottom-nav{
+    position:fixed;
+    bottom:0;left:0;
+    width:100%;
+    height:70px;
+    background:#000;
+    display:flex;
+}
+.bottom-nav a{
+    flex:1;
+    text-align:center;
+    color:#aaa;
+    font-size:11px;
+    text-decoration:none;
+}
+.bottom-nav span{font-size:20px;display:block}
+.bottom-nav .active{color:#f39c12}
+
+/* POPUP DETAIL */
+.popup-overlay{
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+.popup{
+    background:linear-gradient(180deg,#111,#222);
+    padding:20px;
+    border-radius:15px;
+    width:90%;
+    max-width:400px;
+    color:#fff;
+    text-align:left;
+    box-shadow:0 4px 10px rgba(255,215,0,0.5);
+}
+.popup h3{margin-bottom:10px;color:#f39c12}
+.popup button{
+    margin-top:15px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#f39c12;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png">
+    <img src="logo.png">
+</header>
+
+<div class="page-title">Riwayat Transaksi</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+    <button class="active" data-filter="All">Semua</button>
+    <button data-filter="Deposit">Deposit</button>
+    <button data-filter="Withdraw">Withdraw</button>
+</div>
+
+<!-- LIST TRANSAKSI -->
+<div class="transaction-list" id="transactionList">
+    <!-- Transaksi akan di-render di sini -->
+</div>
+
+<!-- POPUP DETAIL -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup">
+        <h3>Detail Transaksi</h3>
+        <p id="popupText"></p>
+        <button onclick="closePopup()">Tutup</button>
+    </div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#"><span>🏠</span>BERANDA</a>
+    <a href="#"><span>🎁</span>PROMO</a>
+    <a href="#"><span>💰</span>DEPO</a>
+    <a href="#" class="active"><span>📜</span>RIWAYAT</a>
+    <a href="#"><span>👤</span>AKUN</a>
+</nav>
+
+<script>
+let transactions = [
+    {id:1,date:'2026-01-15 12:30',type:'Deposit',amount:'Rp 500.000',status:'Sukses',detail:'Deposit via Bank BRI'},
+    {id:2,date:'2026-01-14 18:45',type:'Withdraw',amount:'Rp 1.200.000',status:'Pending',detail:'Withdraw ke Rek BCA'},
+    {id:3,date:'2026-01-12 09:20',type:'Bonus',amount:'Rp 50.000',status:'Sukses',detail:'Bonus Harian'}
+];
+
+let currentFilter = 'All';
+let txID = transactions.length+1;
+
+function statusClass(status){
+    if(status==='Sukses') return 'status-sukses';
+    if(status==='Pending') return 'status-pending';
+    if(status==='Gagal') return 'status-gagal';
+    if(status==='Bonus') return 'status-bonus';
+    return '';
+}
+
+function renderTransactions(){
+    const container = document.getElementById('transactionList');
+    container.innerHTML = '';
+    transactions.forEach(tx=>{
+        if(currentFilter==='Deposit' && tx.type!=='Deposit') return;
+        if(currentFilter==='Withdraw' && tx.type!=='Withdraw') return;
+        // Semua: tampil semua tipe termasuk Bonus
+        const div = document.createElement('div');
+        div.className = 'transaction-item';
+        div.id = 'tx-'+tx.id;
+        div.innerHTML = `
+            <div class="transaction-left">
+                <div class="transaction-date">${tx.date}</div>
+                <div class="transaction-type">${tx.type}</div>
+            </div>
+            <div class="transaction-right">
+                <div class="transaction-amount">${tx.amount}</div>
+                <div class="transaction-status ${statusClass(tx.type==='Bonus'?'Bonus':tx.status)}">${tx.type==='Bonus'?'Bonus':tx.status}</div>
+            </div>
+        `;
+        div.addEventListener('click',()=>openPopup(tx));
+        container.appendChild(div);
+    });
+}
+
+// ===================== Popup =====================
+function openPopup(tx){
+    const popupText = `
+Jenis: ${tx.type}
+Jumlah: ${tx.amount}
+Status: ${tx.type==='Bonus'?'Bonus':tx.status}
+Tanggal: ${tx.date}
+Detail: ${tx.detail}
+    `;
+    document.getElementById('popupText').innerText = popupText;
+    document.getElementById('popupOverlay').style.display = 'flex';
+}
+function closePopup(){
+    document.getElementById('popupOverlay').style.display = 'none';
+}
+
+// ===================== Filter =====================
+document.querySelectorAll('.filter-bar button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-bar button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.getAttribute('data-filter');
+        renderTransactions();
+    });
+});
+
+// ===================== Tambah Transaksi dari Menu DEPO / Bonus =====================
+function addTransaction(type, amount, detail){
+    const tx = {
+        id: txID++,
+        date: new Date().toLocaleString(),
+        type: type, // Deposit / Withdraw / Bonus
+        amount: amount,
+        status: type==='Bonus'?'Bonus':'Sukses',
+        detail: detail
+    };
+    transactions.unshift(tx);
+    renderTransactions();
+}
+
+// Contoh penggunaan:
+// addTransaction('Deposit','Rp 500.000','Deposit via Bank BRI');
+// addTransaction('Withdraw','Rp 1.200.000','Withdraw ke Rek BCA');
+// addTransaction('Bonus','Rp 50.000','Bonus Harian');
+
+renderTransactions();
+</script>
+
+</body>
+</html>

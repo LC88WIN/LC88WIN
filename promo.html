@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LC88WIN - Promotion</title>
+
+<style>
+/* ================= GLOBAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ================= BACKGROUND ================= */
+body{
+    padding-bottom:80px;
+    background:
+        radial-gradient(circle at top, rgba(121, 13, 0, 1), transparent 100%),
+        radial-gradient(circle at bottom, rgba(121, 13, 0, 1), transparent 100%),
+        linear-gradient(180deg, #000000 100%, #111111 100%);
+    background-blend-mode: Difference;
+    min-height:100vh;
+    color:#fff;
+}
+
+/* ================= HEADER ================= */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    background: rgba(0,0,0,0.6);
+    border-radius:12px;
+    margin:10px;
+}
+header img{
+    height:45px;
+}
+
+/* ================= TITLE ================= */
+.promo-title-wrapper{
+    display:flex;
+    justify-content:center;
+    margin:15px 10px;
+}
+.promo-title{
+    background:#000;
+    padding:12px 40px;
+    border-radius:22px;
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:2px;
+    color:#f39c12;
+    box-shadow:0 0 15px rgba(243,156,18,0.6);
+}
+
+/* ================= PROMO ================= */
+.promo-container{
+    padding:10px;
+}
+
+.promo-item{
+    margin-bottom:25px;
+}
+
+/* BOX GAMBAR */
+.promo-image{
+    width:100%;
+    height:190px;
+    border-radius:40px;
+    overflow:hidden;
+    background: linear-gradient(135deg,#3a0000,#120000);
+    box-shadow:
+        inset 0 4px 10px rgba(255,255,255,0.05),
+        0 8px 18px rgba(0,0,0,0.8);
+}
+.promo-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* DETAIL BUTTON */
+.promo-action{
+    text-align:center;
+    margin-top:8px;
+}
+.promo-detail-btn{
+    display:inline-block;
+    padding:6px 18px;
+    background:#000;
+    color:#f39c12;
+    font-weight:bold;
+    border-radius:20px;
+    cursor:pointer;
+    border:1px solid rgba(243,156,18,0.5);
+    transition:0.3s;
+}
+.promo-detail-btn:hover{
+    background:#f39c12;
+    color:#000;
+}
+
+/* DETAIL BOX */
+.promo-detail{
+    display:none;
+    margin-top:10px;
+    padding:15px;
+    background: rgba(0,0,0,0.7);
+    border-radius:20px;
+    border:1px solid rgba(243,156,18,0.4);
+    animation: slideDown 0.3s ease;
+}
+.promo-detail h3{
+    margin-bottom:6px;
+    color:#f39c12;
+    font-size:16px;
+}
+.promo-detail p{
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* ANIMATION */
+@keyframes slideDown{
+    from{ opacity:0; transform: translateY(-10px); }
+    to{ opacity:1; transform: translateY(0); }
+}
+
+/* ================= BOTTOM NAV ================= */
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:70px;
+    background:rgba(0,0,0,0.95);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:9999;
+    border-top:1px solid rgba(255,215,0,0.3);
+}
+.bottom-nav a{
+    flex:1;
+    text-align:center;
+    color:#aaa;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:bold;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+}
+.bottom-nav a span{
+    font-size:20px;
+}
+.bottom-nav a.active{
+    color:#f39c12;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <img src="logo.png" alt="LC88WIN">
+    <img src="banner-small.png" alt="LC88WIN">
+</header>
+
+<!-- ================= TITLE ================= -->
+<div class="promo-title-wrapper">
+    <div class="promo-title">PROMOTION</div>
+</div>
+
+<!-- ================= PROMO CONTENT ================= -->
+<div class="promo-container">
+
+    <div class="promo-item">
+        <div class="promo-image">
+            <img src="main-banner.jpg" alt="Promo 1">
+        </div>
+        <div class="promo-action">
+            <span class="promo-detail-btn">DETAIL</span>
+        </div>
+        <div class="promo-detail">
+            <h3>Bonus New Member 100%</h3>
+            <p>
+                Bonus cashback 100% untuk member baru.<br>
+                Minimal deposit Rp 50.000.<br>
+                Maksimal Bonus 500.000.<br>
+
+                Syarat & ketentuan berlaku.<br>
+                * Semua permainan slot tidak diperbolehkan bertaruh 3 baris di bawah. <br>
+                * Promosi ini memiliki jumlah penarikan maksimum 5 juta.<br>
+                * Anggota wajib memverifikasi identitas mereka menggunakan nomor telepon dan email mereka.<br>
+                * Promosi ini tidak dapat digunakan bersamaan dengan promosi lain. Rabat akan mulai dihitung setelah mencapai persyaratan omset untuk promosi ini.<br>
+                * Bonus berlaku selama tujuh (7) hari setelah klaim kecuali disebutkan hari-hari tertentu. Kemenangan dan bonus akan dihapus dari akun anggota jika omset tidak terpenuhi dalam jangka waktu yang disebutkan.<br>
+                * Jika ada anggota yang membuat beberapa akun dan menggunakan komputer atau telepon yang sama, LC88WIN berhak untuk menangguhkan atau mengakhiri akun dan kredit anggota secara permanen.<br>
+                * Jika ada [individu/tim/organisasi] yang dicurigai melakukan [taruhan abnormal/taruhan berlawanan/taruhan silang] dan aktivitas curang untuk tujuan penipuan/penyalahgunaan bonus, setelah diverifikasi, LC88WIN berhak untuk menyita pokok dan keuntungan yang relevan.<br>
+                * LC88WIN berhak untuk memodifikasi, membatalkan, mengubah, atau mengakhiri promosi kapan saja, dengan atau tanpa pemberitahuan sebelumnya.<br>
+                * * Syarat & Ketentuan Umum LC88WIN berlaku.<br>
+            </p>
+        </div>
+    </div>
+
+    <div class="promo-item">
+        <div class="promo-image">
+            <img src="main-banner2.jpg" alt="Promo 2">
+        </div>
+        <div class="promo-action">
+            <span class="promo-detail-btn">DETAIL</span>
+        </div>
+        <div class="promo-detail">
+            <h3>Cashback Mingguan</h3>
+            <p>
+                Cashback hingga 10% setiap minggu.<br>
+                Berlaku untuk semua provider.
+            </p>
+        </div>
+    </div>
+
+    <div class="promo-item">
+        <div class="promo-image">
+            <img src="main-banner3.jpg" alt="Promo 3">
+        </div>
+        <div class="promo-action">
+            <span class="promo-detail-btn">DETAIL</span>
+        </div>
+        <div class="promo-detail">
+            <h3>Turnover Harian</h3>
+            <p>
+                Turnover harian hingga jutaan rupiah.<br>
+                Klaim setiap hari.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ================= BOTTOM NAV ================= -->
+<nav class="bottom-nav">
+    <a href="#" class="active">
+        <span>🏠</span>
+        BERANDA
+    </a>
+    <a href="#">
+        <span>🎁</span>
+        PROMO
+    </a>
+    <a href="#">
+        <span>💰</span>
+        DEPO
+    </a>
+    <a href="#">
+        <span>📜</span>
+        RIWAYAT
+    </a>
+    <a href="#">
+        <span>👤</span>
+        AKUN
+    </a>
+</nav>
+
+<script>
+/* ===== TOGGLE DETAIL PROMO ===== */
+document.querySelectorAll('.promo-detail-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        const currentDetail = btn.closest('.promo-item').querySelector('.promo-detail');
+        const isOpen = currentDetail.style.display === 'block';
+
+        document.querySelectorAll('.promo-detail').forEach(d=>{
+            d.style.display = 'none';
+        });
+
+        currentDetail.style.display = isOpen ? 'none' : 'block';
+    });
+});
+
+/* ===== ACTIVE NAV ===== */
+document.querySelectorAll('.bottom-nav a').forEach(item=>{
+    item.addEventListener('click',()=>{
+        document.querySelectorAll('.bottom-nav a').forEach(i=>i.classList.remove('active'));
+        item.classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>

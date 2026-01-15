@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LC88WIN - Profil</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+
+/* BACKGROUND */
+body{
+    min-height:100vh;
+    padding-bottom:90px;
+    background:
+        radial-gradient(circle at top,#6b0000,transparent 60%),
+        radial-gradient(circle at bottom,#6b0000,transparent 60%),
+        linear-gradient(180deg,#000,#120000);
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+    margin:10px;
+    padding:12px 18px;
+    background:linear-gradient(90deg,#120000,#2a0000);
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+header img{height:42px}
+.menu{
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* TITLE */
+.page-title{
+    text-align:center;
+    margin:18px 0;
+    font-size:26px;
+    font-weight:bold;
+    color:#f5b041;
+}
+
+/* PROFILE CARD */
+.profile-card{
+    margin:10px;
+    padding:20px;
+    background:linear-gradient(180deg,#7a0000,#2b0000);
+    border-radius:22px;
+    text-align:center;
+    transition:.3s;
+}
+.profile-card:hover{
+    box-shadow:0 0 18px rgba(245,176,65,.6);
+    transform:translateY(-3px);
+}
+
+/* FOTO PROFIL */
+.photo{
+    width:110px;
+    height:110px;
+    margin:0 auto 10px;
+    border-radius:50%;
+    border:3px solid #f5b041;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#f5b041;
+    font-size:13px;
+    cursor:pointer;
+    overflow:hidden;
+}
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* INFO */
+.profile-card h2{color:#f5b041;font-size:22px}
+.profile-card p{font-size:15px;margin-top:5px}
+
+/* INFO CARD */
+.info-card{
+    margin:12px;
+    padding:14px;
+    background:#0b0b0b;
+    border-radius:14px;
+}
+.info-card h4{margin:6px 0}
+.info-box{
+    background:#1a1a1a;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+/* BANK */
+.bank-list{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin:18px 0;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+    position:fixed;
+    bottom:0;left:0;
+    width:100%;
+    height:70px;
+    background:#000;
+    display:flex;
+    border-top:1px solid #222;
+}
+.bottom-nav a{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    color:#888;
+    font-size:11px;
+    padding-top:8px;
+}
+.bottom-nav span{
+    display:block;
+    font-size:22px;
+}
+.bottom-nav .active{
+    color:#f5b041;
+    transform:translateY(-4px);
+}
+
+/* ===== SIDEBAR ===== */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+.overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.sidebar{
+    position:fixed;
+    top:0;
+    right:-300px;
+    width:300px;
+    height:100%;
+    background:linear-gradient(180deg,#120000,#000);
+    box-shadow:-5px 0 15px rgba(0,0,0,.7);
+    transition:.4s;
+    padding:20px;
+    z-index:10;
+}
+.sidebar.active{
+    right:0;
+}
+.sidebar h3{
+    color:#f5b041;
+    margin-bottom:20px;
+}
+.sidebar a{
+    display:block;
+    padding:12px 10px;
+    margin-bottom:10px;
+    border-radius:10px;
+    color:#fff;
+    text-decoration:none;
+    background:#1a1a1a;
+    transition:.3s;
+}
+.sidebar a:hover{
+    background:#f5b041;
+    color:#000;
+    transform:translateX(-5px);
+}
+.close{
+    position:absolute;
+    top:15px;
+    right:15px;
+    font-size:22px;
+    cursor:pointer;
+}
+#uploadPhoto{display:none}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png">
+    <div class="menu" onclick="openMenu()">☰</div>
+</header>
+
+<div class="page-title">Profil Saya</div>
+
+<div class="profile-card">
+    <div class="photo" onclick="uploadClick()">
+        <span id="photoText">Foto Profil</span>
+        <img id="photoPreview" hidden>
+    </div>
+    <input type="file" id="uploadPhoto" accept="image/*" onchange="previewPhoto(this)">
+    <h2>Dio Putra Rinanda</h2>
+    <p>Email: dio@example.com</p>
+    <p>Total Saldo: Rp 5.000.000</p>
+</div>
+
+<div class="info-card">
+    <h4>Rekening Terdaftar</h4>
+    <div class="info-box">BCA / 026844113 / DIANA APRIANA</div>
+    <h4>Deposit Terakhir</h4>
+    <div class="info-box">Rp500.000 / 15-01-2026 17:08</div>
+    <h4>Withdraw Terakhir</h4>
+    <div class="info-box">Rp500.000 / 15-01-2026 17:08</div>
+</div>
+
+<div class="bank-list">
+    <div>🏦 Bank 1</div>
+    <div>🏦 Bank 2</div>
+    <div>🏦 Bank 3</div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="#"><span>🏠</span>BERANDA</a>
+    <a href="#"><span>🎁</span>PROMO</a>
+    <a href="#"><span>💰</span>DEPO</a>
+    <a href="#"><span>📜</span>RIWAYAT</a>
+    <a href="#" class="active"><span>👤</span>AKUN</a>
+</nav>
+
+<!-- SIDEBAR -->
+<div class="overlay" onclick="closeMenu()"></div>
+<div class="sidebar">
+    <div class="close" onclick="closeMenu()">✕</div>
+    <h3>Menu Akun</h3>
+    <a href="#">⚙ Pengaturan Akun</a>
+    <a href="#">📜 Riwayat Taruhan</a>
+    <a href="#">📊 Jumlah Turnover</a>
+    <a href="#">🏦 Kaitkan Akun Bank</a>
+    <a href="#">🔒 Pengaturan Keamanan</a>
+    <a href="#">📞 Hubungi Kami</a>
+</div>
+
+<script>
+function openMenu(){
+    document.querySelector('.sidebar').classList.add('active');
+    document.querySelector('.overlay').classList.add('active');
+}
+function closeMenu(){
+    document.querySelector('.sidebar').classList.remove('active');
+    document.querySelector('.overlay').classList.remove('active');
+}
+function uploadClick(){
+    document.getElementById('uploadPhoto').click();
+}
+function previewPhoto(input){
+    if(input.files[0]){
+        const r=new FileReader();
+        r.onload=e=>{
+            photoPreview.src=e.target.result;
+            photoPreview.hidden=false;
+            photoText.style.display='none';
+        };
+        r.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+
+</body>
+</html>
