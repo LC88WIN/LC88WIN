@@ -180,7 +180,6 @@ header img{height:45px}
     <button class="tab-btn" id="withdrawTab">Withdraw</button>
 </div>
 
-<!-- ================= DEPOSIT ================= -->
 <div id="depositBox">
 
 <div class="method-title">Metode transfer</div>
@@ -192,7 +191,6 @@ header img{height:45px}
     <button class="method-btn" data-method="pulsa">Pulsa</button>
 </div>
 
-<!-- SIMPLE FORM -->
 <div class="form-box" id="simpleDeposit">
     <div class="label">Saldo akun :</div>
     <input class="input" value="Rp 1.250.000" readonly>
@@ -203,7 +201,6 @@ header img{height:45px}
     <button class="action-btn" id="submitSimple">Submit Deposit</button>
 </div>
 
-<!-- BANK FORM -->
 <div class="form-box hidden" id="bankDeposit">
     <div class="label">Saldo akun :</div>
     <input class="input" value="Rp 1.250.000" readonly>
@@ -226,7 +223,6 @@ header img{height:45px}
 
 </div>
 
-<!-- ================= WITHDRAW ================= -->
 <div id="withdrawBox" class="hidden">
 <div class="form-box">
     <div class="label">Saldo akun :</div>
@@ -245,7 +241,6 @@ header img{height:45px}
 </div>
 </div>
 
-<!-- POPUPS -->
 <div class="popup" id="qrPopup">
     <div class="popup-box">
         <h3>Scan QR Deposit</h3>
@@ -347,5 +342,20 @@ withdrawTab.onclick=()=>{
 };
 </script>
 
+<!-- ================== TAMBAHAN SAJA (NAVIGASI) ================== -->
+<script>
+document.querySelectorAll(".bottom-nav a").forEach((nav, index)=>{
+    nav.addEventListener("click",(e)=>{
+        e.preventDefault();
+        if(index===0) location.href="home.html";
+        if(index===1) location.href="promo.html";
+        if(index===2) location.href="depo.html";
+        if(index===3) location.href="riwayat.html";
+        if(index===4) location.href="akun.html";
+    });
+});
+</script>
+
 </body>
 </html>
+	
